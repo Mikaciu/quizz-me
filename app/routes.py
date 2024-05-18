@@ -1,0 +1,9 @@
+from app import app
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
+@app.route("/jsp/list")
+def jsp_list():
+    return "coucou"
