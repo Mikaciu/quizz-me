@@ -6,20 +6,16 @@ build-backend = "setuptools.build_meta"
 name = "quizz-me"
 dynamic = ["version"]
 dependencies = [
-  "flask",
-  "Flask-Migrate",
-  "Flask-SQLAlchemy",
+  "Django",
   "psycopg2-binary",
   "python-dotenv",
-  "sqlalchemy",
-  "Django",
 ]
 requires-python = ">= 3.11"
 authors = [
-  {name = "Mikaël Hautin", email = "haha"},
+  {name = "Mikaël Hautin", email = "3902243+Mikaciu@users.noreply.github.com"},
 ]
 maintainers = [
-  {name = "Mikaël Hautin", email = "haha"},
+  {name = "Mikaël Hautin", email = "3902243+Mikaciu@users.noreply.github.com"},
 ]
 description = "Generate quizz and follow-up alumni progress"
 readme = "README.md"

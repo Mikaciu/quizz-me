@@ -19,6 +19,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("quizz/", include("quizz.urls")),
+    path("quizz_backend/", include("quizz_backend.urls")),
     path("admin/", admin.site.urls),
 ]
