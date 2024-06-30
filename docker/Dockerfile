@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3
+FROM python:3.11
 
 # set work directory
 WORKDIR /usr/src/app
@@ -9,18 +9,16 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # install dependencies
-COPY ./requirements.txt ./requirements.txt
+COPY ./pyproject.toml ./
 RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install .
 
 COPY ./docker/entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
-EXPOSE 5000
-
 # copy project
-COPY  . ./
+COPY src/. ./
 
 ENTRYPOINT [ "/usr/bin/entrypoint.sh" ]
 
-CMD [ "python", "app.py", "run", "-h", "0.0.0.0"]
+EXPOSE 8000
