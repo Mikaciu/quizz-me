@@ -4,8 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+quizz-me = {editable = true, path = "."}
 
 [dev-packages]
+build = ">=0.7.0"
+tox = ">=3.15.0"
+quizz-me = {extras = ["testing"], editable = true, path = "."}
 
 [requires]
-python_version = "3.12"
+python_version = "3.11"
+
+[scripts]
+manage = "python src/manage.py"
+ 
