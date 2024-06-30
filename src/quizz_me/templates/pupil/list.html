@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>Pupil list</title>
+</head>
+
+<body>
+    <ul>
+        {% for pupil in pupils %}
+        <li>
+            {{ pupil.first_name }} {{ pupil.last_name }}
+        </li>
+    </ul>
+    {% block content %}{% endblock %}
+
+</body>
+
+</html>
