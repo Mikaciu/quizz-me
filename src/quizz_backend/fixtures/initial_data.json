@@ -1,5 +1,10 @@
 [
   {
+    "model": "quizz_backend.pupil",
+    "pk": 1,
+    "fields": { "first_name": "Guy", "last_name": "Truitos", "level_id": 1 }
+  },
+  {
     "model": "quizz_backend.pupillevel",
     "pk": 1,
     "fields": { "label": "JSP1" }

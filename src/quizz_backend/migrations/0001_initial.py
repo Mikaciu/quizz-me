@@ -13,44 +13,141 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='PupilLevel',
+            name="PupilLevel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("label", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Quizz',
+            name="Quizz",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.CharField(max_length=255)),
-                ('creation_date', models.DateField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("label", models.CharField(max_length=255)),
+                ("creation_date", models.DateField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='QuizzAnswerSource',
+            name="PupilAnswer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('label', models.CharField(max_length=255)),
+                (
+                    "pupil_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="quizz_backend.pupil",
+                    ),
+                ),
+                (
+                    "assessment_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="quizz_backend.assessment",
+                    ),
+                ),
+                (
+                    "answer",
+                    models.TextField()
+                )
             ],
         ),
         migrations.CreateModel(
-            name='Pupil',
+            name="Assessment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=255)),
-                ('last_name', models.CharField(max_length=255)),
-                ('level_id', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='quizz_backend.pupillevel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateField()),
+                (
+                    "level_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="quizz_backend.pupillevel",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='QuizzItem',
+            name="QuizzAnswerSource",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('question', models.CharField(max_length=255)),
-                ('answer', models.TextField()),
-                ('source_range', models.CharField(max_length=64)),
-                ('source_id', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='quizz_backend.quizzanswersource')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("label", models.CharField(max_length=255)),
+            ],
+        ),
+        migrations.CreateModel(
+            name="Pupil",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=255)),
+                ("last_name", models.CharField(max_length=255)),
+                (
+                    "level_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="quizz_backend.pupillevel",
+                    ),
+                ),
+            ],
+        ),
+        migrations.CreateModel(
+            name="QuizzItem",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("question", models.CharField(max_length=255)),
+                ("answer", models.TextField()),
+                ("source_range", models.CharField(max_length=64)),
+                (
+                    "source_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to="quizz_backend.quizzanswersource",
+                    ),
+                ),
             ],
         ),
     ]

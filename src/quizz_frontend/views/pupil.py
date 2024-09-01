@@ -9,7 +9,7 @@ def list(request):
 def pupil(_, uid: int):
     try:
         current_pupil = Pupil.objects.get(pk=uid)
-        return HttpResponse(f"{current_pupil.first_name} {current_pupil.last_name}")
+        return HttpResponse(f"{current_pupil.first_name} {current_pupil.last_name}, level: {current_pupil.level_id.label}")
     except Exception as e:
         return HttpResponse(content=e, status=404)
 
